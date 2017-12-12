@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.17.0/babel.min.js"></script>
+    <script type="text/babel" data-presets="es2015,react">
+      class HelloWorld extends React.Component {
+        state = {
+          text: 'Hello world!'
+        }
+
+        componentDidMount() {}
+
+        render() {
+          return (
+            <h2>{this.state.text}</h2>
+          )
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="es2015,react">
+      window.onload = function() {
+        ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+      }
+    </script>
+  </body>
+</html>
