@@ -7,18 +7,29 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.17.0/babel.min.js"></script>
     <script type="text/babel" data-presets="es2015,react">
+      // This is component with internal state :)
       class HelloWorld extends React.Component {
         state = {
-          text: 'Hello world!'
+          text: 'Hello'
         }
 
         componentDidMount() {}
 
         render() {
           return (
-            <h2>{this.state.text}</h2>
+            <h2>
+              <span>{this.state.text}</span>
+              <span>{this.props.text}</span>
+            </h2>
           )
         }
+      }
+
+      // We don't always need state so we use stateless :)
+      const HelloWorldStateless = (props) => {
+        return (
+          <h2>{props.text}</h2>
+        )
       }
     </script>
   </head>
@@ -26,7 +37,11 @@
     <div id="root"></div>
     <script type="text/babel" data-presets="es2015,react">
       window.onload = function() {
-        ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+        // Since React 16, we can return multiple compnents at once!
+        ReactDOM.render([
+          <HelloWorld text="World!" />,
+          <HelloWorldStateless text="Hello stateless" />
+        ], document.getElementById('root'));
       }
     </script>
   </body>
